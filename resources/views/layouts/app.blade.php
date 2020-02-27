@@ -17,7 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     <link rel="shortcut icon" type="image/png" href="{{url('/favicon.png')}}"/>
 </head>
@@ -29,8 +30,6 @@
         <div class='text-center pt-5' style='padding-bottom: 12rem'>
             @yield('content')
         </div>
-
-        @include('inc.footer')
 
     </div>
 </body>
