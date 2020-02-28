@@ -36,3 +36,21 @@ body{
 .container_main{
     background-color: var(--main_color);
 }
+
+
+/* Bootstrap */
+
+.btn-primary{
+    background-color: var(--main_color);
+    color: var(--lighttext_color);
+    font-weight: bold;
+    border: 0;
+    border-radius: 8px;
+    padding: 8px 15px;
+}
+.btn-primary:hover{
+    background-color: var(--main_color_dark);
+}
+.btn-primary.active:focus{
+    background-color: var(--main_color_dark);
+}
