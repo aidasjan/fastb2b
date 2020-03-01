@@ -15,6 +15,7 @@ class CreateRelatedProductsTable extends Migration
     {
         Schema::create('related_products', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('product_id');
             $table->timestamps();
         });
     }

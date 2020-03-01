@@ -15,6 +15,9 @@ class CreateDiscountsTable extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->integer('subcategory_id');
+            $table->double('discount');
             $table->timestamps();
         });
     }
