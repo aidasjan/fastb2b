@@ -25,12 +25,31 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->isClient() || true){
-            return view('pages.client.dashboard');
+        if(auth()->user()->isClient()){
+            $submitted_orders = Order::where('user_id', auth()->user()->id)->where('status', '1')->orderBy('updated_at', 'desc')->take(3)->get();
+            $unsubmitted_orders = Order::where('user_id', auth()->user()->id)->where('status', '0')->orderBy('updated_at', 'desc')->take(3)->get();
+            $discounts = Discount::where('user_id', auth()->user()->id)->orderBy('discount', 'desc')->take(5)->get();
+            
+            $data = array(
+                'submitted_orders'=>$submitted_orders,
+                'unsubmitted_orders'=>$unsubmitted_orders,
+                'discounts'=>$discounts
+            );
+
+            foreach($data['discounts'] as $discount){
+                $discount->subcategory_name = $discount->getSubcategory()->name;
+            }
+
+            return view('pages.client.dashboard')->with($data);
         }
 
         else if(auth()->user()->isAdmin()) {
-            
+            $submitted_orders = Order::where('status', '1')->orderBy('updated_at', 'desc')->take(5)->get();
+            foreach($submitted_orders as $order){
+                if($order->getClient() === null) abort(404);
+                $order->client = $order->getClient();
+            }
+            return view('pages.admin.dashboard')->with('submitted_orders', $submitted_orders);
         }
 
         else abort(404);
