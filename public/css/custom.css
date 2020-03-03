@@ -37,6 +37,10 @@ body{
     background-color: var(--main_color);
 }
 
+.container_white{
+    background-color: #ffffff;
+}
+
 
 /* Bootstrap */
 

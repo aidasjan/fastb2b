@@ -52,20 +52,10 @@
                         <input id="password_confirmation" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="" name="password_confirmation" placeholder="" required>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-md-4 offset-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="remember">
-                                Remember me
-                            </label> 
-                        </div>
-                    </div>
-                </div>
                 <div class="row mb-0 pt-3 text-center">
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary text-uppercase">
-                            Login
+                            Register
                         </button>
                     </div>
                 </div>
