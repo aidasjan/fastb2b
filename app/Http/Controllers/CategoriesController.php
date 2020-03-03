@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\discount;
+use App\category;
 use Illuminate\Http\Request;
 
-class DiscountController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class DiscountController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\discount  $discount
+     * @param  \App\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(discount $discount)
+    public function show(category $category)
     {
         //
     }
@@ -52,10 +52,10 @@ class DiscountController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\discount  $discount
+     * @param  \App\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(discount $discount)
+    public function edit(category $category)
     {
         //
     }
@@ -64,10 +64,10 @@ class DiscountController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\discount  $discount
+     * @param  \App\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, discount $discount)
+    public function update(Request $request, category $category)
     {
         //
     }
@@ -75,10 +75,10 @@ class DiscountController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\discount  $discount
+     * @param  \App\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(discount $discount)
+    public function destroy(category $category)
     {
         //
     }

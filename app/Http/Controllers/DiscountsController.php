@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\order;
+use App\discount;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class DiscountsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\order  $order
+     * @param  \App\discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function show(order $order)
+    public function show(discount $discount)
     {
         //
     }
@@ -52,10 +52,10 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\order  $order
+     * @param  \App\discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function edit(order $order)
+    public function edit(discount $discount)
     {
         //
     }
@@ -64,10 +64,10 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\order  $order
+     * @param  \App\discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, order $order)
+    public function update(Request $request, discount $discount)
     {
         //
     }
@@ -75,10 +75,10 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\order  $order
+     * @param  \App\discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function destroy(order $order)
+    public function destroy(discount $discount)
     {
         //
     }

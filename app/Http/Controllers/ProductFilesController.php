@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\related_product;
+use App\product_file;
 use Illuminate\Http\Request;
 
-class RelatedProductController extends Controller
+class ProductFilesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class RelatedProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\related_product  $related_product
+     * @param  \App\product_file  $product_file
      * @return \Illuminate\Http\Response
      */
-    public function show(related_product $related_product)
+    public function show(product_file $product_file)
     {
         //
     }
@@ -52,10 +52,10 @@ class RelatedProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\related_product  $related_product
+     * @param  \App\product_file  $product_file
      * @return \Illuminate\Http\Response
      */
-    public function edit(related_product $related_product)
+    public function edit(product_file $product_file)
     {
         //
     }
@@ -64,10 +64,10 @@ class RelatedProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\related_product  $related_product
+     * @param  \App\product_file  $product_file
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, related_product $related_product)
+    public function update(Request $request, product_file $product_file)
     {
         //
     }
@@ -75,10 +75,10 @@ class RelatedProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\related_product  $related_product
+     * @param  \App\product_file  $product_file
      * @return \Illuminate\Http\Response
      */
-    public function destroy(related_product $related_product)
+    public function destroy(product_file $product_file)
     {
         //
     }
