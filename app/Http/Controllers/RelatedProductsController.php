@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\subcategory;
+use App\related_product;
 use Illuminate\Http\Request;
 
-class SubcategoryController extends Controller
+class RelatedProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SubcategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\subcategory  $subcategory
+     * @param  \App\related_product  $related_product
      * @return \Illuminate\Http\Response
      */
-    public function show(subcategory $subcategory)
+    public function show(related_product $related_product)
     {
         //
     }
@@ -52,10 +52,10 @@ class SubcategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\subcategory  $subcategory
+     * @param  \App\related_product  $related_product
      * @return \Illuminate\Http\Response
      */
-    public function edit(subcategory $subcategory)
+    public function edit(related_product $related_product)
     {
         //
     }
@@ -64,10 +64,10 @@ class SubcategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\subcategory  $subcategory
+     * @param  \App\related_product  $related_product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, subcategory $subcategory)
+    public function update(Request $request, related_product $related_product)
     {
         //
     }
@@ -75,10 +75,10 @@ class SubcategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\subcategory  $subcategory
+     * @param  \App\related_product  $related_product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(subcategory $subcategory)
+    public function destroy(related_product $related_product)
     {
         //
     }

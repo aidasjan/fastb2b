@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\other_product;
+use App\subcategory;
 use Illuminate\Http\Request;
 
-class OrderProductController extends Controller
+class SubcategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OrderProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\other_product  $other_product
+     * @param  \App\subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function show(other_product $other_product)
+    public function show(subcategory $subcategory)
     {
         //
     }
@@ -52,10 +52,10 @@ class OrderProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\other_product  $other_product
+     * @param  \App\subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(other_product $other_product)
+    public function edit(subcategory $subcategory)
     {
         //
     }
@@ -64,10 +64,10 @@ class OrderProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\other_product  $other_product
+     * @param  \App\subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, other_product $other_product)
+    public function update(Request $request, subcategory $subcategory)
     {
         //
     }
@@ -75,10 +75,10 @@ class OrderProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\other_product  $other_product
+     * @param  \App\subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(other_product $other_product)
+    public function destroy(subcategory $subcategory)
     {
         //
     }

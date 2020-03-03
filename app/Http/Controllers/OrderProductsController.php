@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\category;
+use App\other_product;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class OrderProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\category  $category
+     * @param  \App\other_product  $other_product
      * @return \Illuminate\Http\Response
      */
-    public function show(category $category)
+    public function show(other_product $other_product)
     {
         //
     }
@@ -52,10 +52,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\category  $category
+     * @param  \App\other_product  $other_product
      * @return \Illuminate\Http\Response
      */
-    public function edit(category $category)
+    public function edit(other_product $other_product)
     {
         //
     }
@@ -64,10 +64,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\category  $category
+     * @param  \App\other_product  $other_product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, category $category)
+    public function update(Request $request, other_product $other_product)
     {
         //
     }
@@ -75,10 +75,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\category  $category
+     * @param  \App\other_product  $other_product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy(other_product $other_product)
     {
         //
     }

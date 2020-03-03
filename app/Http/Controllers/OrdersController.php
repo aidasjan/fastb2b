@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\product_file;
+use App\order;
 use Illuminate\Http\Request;
 
-class ProductFileController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ProductFileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\product_file  $product_file
+     * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(product_file $product_file)
+    public function show(order $order)
     {
         //
     }
@@ -52,10 +52,10 @@ class ProductFileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\product_file  $product_file
+     * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(product_file $product_file)
+    public function edit(order $order)
     {
         //
     }
@@ -64,10 +64,10 @@ class ProductFileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\product_file  $product_file
+     * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, product_file $product_file)
+    public function update(Request $request, order $order)
     {
         //
     }
@@ -75,10 +75,10 @@ class ProductFileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\product_file  $product_file
+     * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product_file $product_file)
+    public function destroy(order $order)
     {
         //
     }
