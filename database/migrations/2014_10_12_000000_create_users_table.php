@@ -28,9 +28,17 @@ class CreateUsersTable extends Migration
 
         DB::table('users')->insert(
             array(
+                'email' => 'admin@imone.lt',
+                'name' => 'Admin',
+                'role' => 'admin',
+                'password' => Hash::make('jonas123'),
+            )
+        );
+        DB::table('users')->insert(
+            array(
                 'email' => 'jonas@imone.lt',
                 'name' => 'Jonas',
-                'role' => 'admin',
+                'role' => 'client',
                 'password' => Hash::make('jonas123'),
             )
         );
