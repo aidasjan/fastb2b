@@ -9,11 +9,11 @@ Project that connects wholesalers with their clients in a convenient way
 3. Entry point for application is ```/public/index.php```
 
 ## Technology stack
+* PHP 7.3
 * Laravel framework 6.8
-* Eloquent ORM
 * MySQL database 8+
+* Eloquent ORM
 * Blade
-* Composer
 
 ## Contribution
 
@@ -23,4 +23,4 @@ Pull Requests are not welcome. This project is only intended to be reviewed by s
 
 Copyright (c) 2019 Aidas Jankauskas, Linas Pocius, Domantas Sabaliauskas
 
-This project is a part of Kaunas Technology University assignment.
+This project is a part of Kaunas University of Technology assignment.
