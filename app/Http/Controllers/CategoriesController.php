@@ -121,11 +121,25 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
-    {
-        //
-    }
+    public function destroy($id)	
+    {	
+        if(auth()->user()->isAdmin()){	
+            $category = Category::find($id);	
+            if($category === null) abort(404);	
+            	
+            foreach($category->subcategories as $subcategory){	
+                foreach($subcategory->products as $product){	
+                    $product->delete();	
+                }	
+                $subcategory->delete();	
+            }	
+            $category->delete();	
+            return redirect('/');	
+        }	
+        else abort(404);	
+    }	
+}
 }
