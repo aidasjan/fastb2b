@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\category;
+use App\Subcategory;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
+    /**	
+     * Create a new controller instance.	
+     *	
+     * @return void	
+     */	
+    public function __construct()	
+    {	
+        $this->middleware('auth', ['except'=>['index', 'show']]);	
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,13 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();	
+        $discount_subcategories = Subcategory::where('discount', '>', 0)->orderBy('discount', 'desc')->get();	
+        $data = array(	
+            'categories'=>$categories,	
+            'discount_subcategories'=>$discount_subcategories	
+        );	
+        return view('pages.categories.index')->with($data);
     }
 
     /**
