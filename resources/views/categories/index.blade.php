@@ -10,6 +10,13 @@
     </div>
 
     <hr>
+    @if(!Auth::guest() && Auth::user()->isAdmin())
+        <div class='row py-3'>
+            <div class='col'>
+                <a href='{{url("/categories/create")}}'><div class='btn btn-primary'>ADD CATEGORY</div></a>
+            </div>
+        </div>
+    @endif
 
     <div class='row py-3'>
         <div class='col'>
