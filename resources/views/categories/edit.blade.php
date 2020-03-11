@@ -16,7 +16,16 @@
             </form>
         </div>
     </div>
-    
+    <div class='row'>
+        <div class='col'>
+            <form action='{{ action('CategoriesController@update', $category->id)}}' method='POST'>
+                <input type='hidden' name='_method' value='DELETE'>
+                {{csrf_field()}}
+                <button type='submit' class='btn btn-link link_red' href='#'>DELETE CATEGORY</button>
+                <br><small class='text_red'>Subcategories and products inside will be deleted as well</small>
+            </form>
+        </div>
+    </div>
 
 </div>
 @endsection
