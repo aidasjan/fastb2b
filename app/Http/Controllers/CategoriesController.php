@@ -142,4 +142,4 @@ class CategoriesController extends Controller
         else abort(404);	
     }	
 }
-}
+
