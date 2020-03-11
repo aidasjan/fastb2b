@@ -82,24 +82,40 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(category $category)
-    {
-        //
+    public function edit($id)	
+    {	
+        if(auth()->user()->isAdmin()){	
+            $category = Category::find($id);	
+            if($category === null) abort(404);	
+            return view('pages.categories.edit')->with('category', $category);	
+        }	
+        else abort(404);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, category $category)
-    {
-        //
+    public function update(Request $request, $id)	
+    {	
+        if(auth()->user()->isAdmin()){	
+            $this->validate($request,[	
+                'categ_name'=>'required'	
+            ]);	
+            	
+            $category = Category::find($id);	
+            if($category === null) abort(404);	
+            $category->name = $request->input('categ_name');	
+            $category->save();	
+            return redirect('/');	
+        }	
+        else abort(404);
     }
 
     /**
