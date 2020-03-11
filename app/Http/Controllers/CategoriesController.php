@@ -40,7 +40,10 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        if(auth()->user()->isAdmin()){	
+            return view('pages.categories.create');	
+        }	
+        else abort(404);
     }
 
     /**
@@ -51,7 +54,18 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(auth()->user()->isAdmin()){	
+            $this->validate($request,[	
+                'categ_name'=>'required'	
+            ]);	
+            	
+            // Create category	
+            $category = new Category;	
+            $category->name = $request->input('categ_name');	
+            $category->save();	
+            return redirect('/');	
+        }	
+        else abort(404);
     }
 
     /**
