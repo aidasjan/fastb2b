@@ -41,6 +41,26 @@ body{
     background-color: #ffffff;
 }
 
+.button_big{	
+    display: inline-block;	
+    background-color: var(--main_color);	
+    color: #fff;	
+    font-size: large;	
+    font-weight: bold;	
+    border: 3px solid var(--main_color);	
+    text-transform: uppercase;	
+    width: 100%;	
+}	
+.button_big:hover{	
+    background-color: var(--main_color_dark);	
+    transition: 0.15s;	
+    border: 3px solid var(--main_color_dark);	
+}	
+.link_red{	
+    color: #d9534f;	
+    font-weight: bold;	
+    transition: 0.2s;	
+}
 
 /* Bootstrap */
 
