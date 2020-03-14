@@ -13,7 +13,9 @@
         <div class='col py-4 mx-3 container_white shadow'>
             <h3>Make order</h3>
             <span>Click this button and start making an order</span>
-            <button type='submit' class='btn btn-primary mt-4 mb-3 text-uppercase' href='#'>New order</button>
+            <div>
+                <button type='submit' class='btn btn-primary mt-4 mb-3 text-uppercase' href='#'>New order</button>
+            </div>
         </div>
     </div>
     <div class='row'>
