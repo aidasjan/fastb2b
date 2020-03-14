@@ -52,6 +52,38 @@
                     </div>
                 </div>
             </div>
+            <div class='row py-4'>
+                <div class='col py-2 container_white shadow'>
+                    <div class='row'>
+                        <div class='col text-left py-3'>
+                            <h3>Submitted orders</h3>
+                        </div>
+                        <div class='col text-right py-3'>
+                            <a class='btn btn-primary text-uppercase' href="{{url('/orders/status/1')}}">All</a>
+                        </div>
+                    </div>
+
+                    <div class='row py-3'>
+                        <div class='col'>
+                            @if(count($submitted_orders) > 0)
+                            <table class='table table_main'>
+                                <?php $counter = 1 ?>
+                                <tr><th></th><th>Order</th><th>Date</th></tr>
+                                @foreach ($submitted_orders as $order)
+                                    <tr>
+                                        <td>{{$counter++}}.</td>
+                                        <td><a href="{{url('/orders'.'/'.$order->id)}}" class='text-uppercase'>{{$order->id}}</td>
+                                        <td>{{$order->updated_at}}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                            @else
+                            <h5>No orders</h5>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 
 </div>
