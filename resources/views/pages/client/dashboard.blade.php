@@ -85,7 +85,59 @@
                 </div>
             </div>
     </div>
+    <div class='col-md mx-3'>
+                
+        <div class='row py-4'>
+            <div class='col py-2 container_white shadow'>
+                <div class='row'>
+                    <div class='col text-left py-3'>
+                        <h3>Discounts</h3>
+                    </div>
+                    <div class='col text-right py-3'>
+                        <a class='btn btn-primary text-uppercase' href="{{url('/discounts')}}">All</a>
+                    </div>
+                </div>
 
+                <div class='row py-3'>
+                    <div class='col'>
+                        @if(count($discounts) > 0)
+                        <table class='table table_main'>
+                            <?php $counter = 1 ?>
+                            <tr><th></th><th>Subcategory</th><th>Value</th></tr>
+                            @foreach ($discounts as $discount)
+                                <tr>
+                                    <td>{{$counter++}}.</td>
+                                    <td><a href="{{url('/subcategories'.'/'.$discount->subcategory_id)}}">{{$discount->subcategory_name}}</td>
+                                    <td>{{$discount->discount}}%</td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        @else
+                        <h5>No discounts</h5>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='row py-4'>
+            <div class='col py-2 shadow container_white'>
+                <div class='row py-3'>
+                    <div class='col text-left'>
+                        <h3>My account</h3>
+                    </div>
+                </div>
+
+                <div class='row py-1'>
+                    <div class='col text-left'>
+                        <h5><b>Name: </b>{{auth()->user()->name}}</h5>
+                        <h5 class='pb-2'><b>Email: </b>{{auth()->user()->email}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
              
 @endsection
