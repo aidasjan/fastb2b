@@ -76,7 +76,26 @@ class SubcategoriesController extends Controller
      */
     public function show($id)
     {
-       
+        $subcategory = Subcategory::find($id);
+        if($subcategory === null) abort(404);
+
+        $data = array(
+            'products' => $subcategory->products,
+            'subcategory' => $subcategory,
+            'headline' => $subcategory->name
+        );
+
+        // Set discounts
+        if(auth()->user() && auth()->user()->isClient()){
+            // Set discount for subcategory
+            $data['discount'] = auth()->user()->getDiscount($subcategory);
+            // Set discounts for products
+            foreach($data['products'] as $product){
+                $product->price = $product->getPriceWithDiscount(auth()->user());
+            }
+        }
+            
+        return view('pages.products.index')->with($data);
         
     }
 
@@ -88,7 +107,12 @@ class SubcategoriesController extends Controller
      */
     public function edit($id)
     {
-        
+        if(auth()->user()->isAdmin()){
+            $subcategory = Subcategory::find($id);
+            if($subcategory === null) abort(404);
+            return view('pages.subcategories.edit') -> with('subcategory', $subcategory);
+        }
+        else abort(404);
     }
 
     /**
@@ -100,7 +124,19 @@ class SubcategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if(auth()->user()->isAdmin()){
+            $this->validate($request,[
+                'subcateg_name'=>'required',
+            ]);
+            
+            $subcategory = Subcategory::find($id);
+            if($subcategory === null) abort(404);
+            $subcategory->name = $request->input('subcateg_name');
+            $subcategory->category_id = $request->input('subcateg_category');
+            $subcategory->save();
+            return redirect('categories/'.$subcategory->category_id);
+        }
+        else abort(404);
     }
 
     /**
@@ -111,6 +147,18 @@ class SubcategoriesController extends Controller
      */
     public function destroy($id)
     {
-        
+        if(auth()->user()->isAdmin()){
+            $subcategory = Subcategory::find($id);
+            if($subcategory === null) abort(404);
+            $categoryID = $subcategory->category_id;
+
+            foreach($subcategory->products as $product){
+                $product->delete();
+            }
+            
+            $subcategory->delete();
+            return redirect('categories/'.$categoryID);
+        }
+        else abort(404);
     }
 }
