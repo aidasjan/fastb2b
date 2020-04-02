@@ -9,6 +9,11 @@
         </div>
 
         @if(!Auth::guest() && Auth::user()->isAdmin())
+            <div class='row pb-2'>
+                <div class='col'>
+                    <a href="{{url('/categories'.'/'.$category->id.'/edit')}}" class='link_main'>EDIT CATEGORY</a>
+                </div>
+            </div>
             <div class='row py-2'>
                 <div class='col'>
                     <a href="{{url('/subcategories/create/'.$category->id)}}"><div class='btn btn-primary'>ADD SUBCATEGORY</div></a>
