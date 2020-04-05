@@ -55,6 +55,14 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         if(auth()->user()->isAdmin()){
+            $this->validate($request,[
+                'prod_code'=>'required',
+                'prod_name'=>'required',
+                'prod_unit'=>'required',
+                'prod_currency'=>'required',
+                'prod_price'=>'required'
+            ]);
+            
             // Create product
             $product = new Product;
             $product->code = $request->input('prod_code');
@@ -119,6 +127,14 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         if(auth()->user()->isAdmin()){
+
+            $this->validate($request,[
+                'prod_code'=>'required',
+                'prod_name'=>'required',
+                'prod_unit'=>'required',
+                'prod_currency'=>'required',
+                'prod_price'=>'required'
+            ]);
 
             $product = Product::find($id);
             if($product === null) abort(404);
