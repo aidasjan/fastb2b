@@ -28,10 +28,14 @@ Route::put('subcategories/{subcategory}', 'SubcategoriesController@update')->nam
 Route::delete('subcategories/{subcategory}', 'SubcategoriesController@destroy')->name('subcategories.destroy');
 Route::get('subcategories/{subcategory}/edit', 'SubcategoriesController@edit')->name('subcategories.edit');
 
+// Discounts routes
+Route::get('discounts', 'DiscountsController@index')->name('discounts.index');
+Route::post('discounts', 'DiscountsController@store')->name('discounts.store');
+Route::get('discounts/{user}/edit', 'DiscountsController@edit')->name('discounts.edit');
+
 // Users routes
 Route::get('users', 'UsersController@index')->name('users.index');
 
-// Users routes
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
