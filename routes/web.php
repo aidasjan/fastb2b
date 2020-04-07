@@ -29,6 +29,9 @@ Route::delete('subcategories/{subcategory}', 'SubcategoriesController@destroy')-
 Route::get('subcategories/{subcategory}/edit', 'SubcategoriesController@edit')->name('subcategories.edit');
 
 // Users routes
+Route::get('users', 'UsersController@index')->name('users.index');
+
+// Users routes
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
