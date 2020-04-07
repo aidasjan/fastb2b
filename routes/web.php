@@ -28,6 +28,15 @@ Route::put('subcategories/{subcategory}', 'SubcategoriesController@update')->nam
 Route::delete('subcategories/{subcategory}', 'SubcategoriesController@destroy')->name('subcategories.destroy');
 Route::get('subcategories/{subcategory}/edit', 'SubcategoriesController@edit')->name('subcategories.edit');
 
+// Products routes
+Route::post('products', 'ProductsController@store')->name('products.store');
+Route::get('products/create/{subcategory}', 'ProductsController@create')->name('products.create');
+Route::get('products/{product}', 'ProductsController@show')->name('products.show');
+Route::put('products/{product}', 'ProductsController@update')->name('products.update');
+Route::delete('products/{product}', 'ProductsController@destroy')->name('products.destroy');
+Route::get('products/{product}/edit', 'ProductsController@edit')->name('products.edit');
+Route::post('products/search', 'ProductsController@search')->name('products.search');
+
 // Users routes
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
