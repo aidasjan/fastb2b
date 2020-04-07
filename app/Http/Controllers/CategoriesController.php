@@ -25,10 +25,8 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::all();	
-        $discount_subcategories = Subcategory::where('discount', '>', 0)->orderBy('discount', 'desc')->get();	
         $data = array(	
             'categories'=>$categories,	
-            'discount_subcategories'=>$discount_subcategories	
         );	
         return view('pages.categories.index')->with($data);
     }
@@ -74,9 +72,16 @@ class CategoriesController extends Controller
      * @param  \App\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(category $category)
+    public function show($id)
     {
-        //
+        $category = Category::find($id);
+        if($category === null) abort(404);
+        $data = array(
+            'page_name' => $category->name,
+            'subcategories' => $category->subcategories,
+            'category' => $category
+        );
+        return view('pages.subcategories/index')->with($data);
     }
 
     /**
