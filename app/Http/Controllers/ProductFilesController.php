@@ -53,7 +53,38 @@ class ProductFilesController extends Controller
                 'prodfile_file'=>'required'
             ]);
             
-            //TODO: handle file
+            // Handle file
+            if($request->hasFile('prodfile_file')){
+
+                // Get file name
+                $fileNameFull = $request->file('prodfile_file')->getClientOriginalName();
+                $fileName = pathinfo($fileNameFull, PATHINFO_FILENAME);
+                $fileExt = pathinfo($fileNameFull, PATHINFO_EXTENSION);
+                $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+
+                // Upload
+                $file = $request->file('prodfile_file');
+                $file->storeAs('productfiles/', $fileNameToStore, 'public_uploads');
+                
+                $product_file = new ProductFile;
+                
+                if($request->input('prodfile_name') != '')
+                    $product_file->name = $request->input('prodfile_name');
+                else $product_file->name = $fileName;
+
+                $product_file->file_name = $fileNameToStore;
+                $product_file->product_id = $request->input('prodfile_productID');
+
+                if(strtolower($fileExt) == 'jpg' || strtolower($fileExt) == 'jpeg' || strtolower($fileExt) == 'png')
+                    $product_file->type = 'image';
+                else if(strtolower($fileExt) == 'pdf' || strtolower($fileExt) == 'docx' || strtolower($fileExt) == 'doc' || strtolower($fileExt) == 'pptx' || strtolower($fileExt) == 'xlsx')
+                    $product_file->type = 'document';
+                else return "Not supported file type. Supported types: PDF, DOCX, DOC, PPTX, XLSX.";
+
+                $product_file->save();
+                return redirect('products/'.$product_file->product_id);
+            }
+            else return "No file";
         }
         else abort(404);
     }
