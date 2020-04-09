@@ -62,6 +62,40 @@ body{
     transition: 0.2s;	
 }
 
+.table_main{
+    background-color: #fafafa;
+    margin: auto;
+    text-align: left;
+    width: 100%;
+}
+
+.table_main tr td{
+    padding: 8px;
+    vertical-align: middle;
+}
+
+.table_main tr th{
+    padding: 8px;
+    background-color: var(--main_color);
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.table_main a{
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--main_color);
+}
+
+.table_main a:hover{
+    transition: 0.15s;
+    color: var(--main_color_dark);
+}
+
+.table_main tr:nth-child(odd){
+    background-color: #eee;
+}
+
 /* Bootstrap */
 
 .btn-primary{
