@@ -61,6 +61,11 @@ body{
     font-weight: bold;	
     transition: 0.2s;	
 }
+.link_main{	
+    color: var(--main_color);	
+    font-weight: bold;	
+    transition: 0.2s;	
+}
 
 .table_main{
     background-color: #fafafa;

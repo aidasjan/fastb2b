@@ -44,4 +44,19 @@ class User extends Authenticatable
     public function isClient(){
         return $this->role === 'client';
     }
+
+    public function getAllDiscounts(){
+        $user = $this;
+        if(!($user->isClient())) return null;
+        $discounts = Discount::where('user_id', $user->id)->get();
+        return $discounts;
+    }
+
+    public function getDiscount($subcategory){
+        $user = $this;
+        if(!($user->isClient())) return null;
+        $discount = $user->getAllDiscounts()->where('subcategory_id', $subcategory->id)->first();
+        if($discount === null) return 0;
+        return $discount->discount;
+    }
 }

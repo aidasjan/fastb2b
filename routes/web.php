@@ -28,6 +28,12 @@ Route::put('subcategories/{subcategory}', 'SubcategoriesController@update')->nam
 Route::delete('subcategories/{subcategory}', 'SubcategoriesController@destroy')->name('subcategories.destroy');
 Route::get('subcategories/{subcategory}/edit', 'SubcategoriesController@edit')->name('subcategories.edit');
 
+
+// Discounts routes
+Route::get('discounts', 'DiscountsController@index')->name('discounts.index');
+Route::post('discounts', 'DiscountsController@store')->name('discounts.store');
+Route::get('discounts/{user}/edit', 'DiscountsController@edit')->name('discounts.edit');
+
 // Products routes
 Route::post('products', 'ProductsController@store')->name('products.store');
 Route::get('products/create/{subcategory}', 'ProductsController@create')->name('products.create');
@@ -37,10 +43,10 @@ Route::delete('products/{product}', 'ProductsController@destroy')->name('product
 Route::get('products/{product}/edit', 'ProductsController@edit')->name('products.edit');
 Route::post('products/search', 'ProductsController@search')->name('products.search');
 
+
 // Users routes
 Route::get('users', 'UsersController@index')->name('users.index');
 
-// Users routes
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
