@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\discount;
 use Illuminate\Http\Request;
+use App\Discount;
+use App\User;
+use App\Subcategory;
 
 class DiscountsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,16 +36,6 @@ class DiscountsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -41,27 +43,64 @@ class DiscountsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        if(auth()->user()->isAdmin()){
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\discount  $discount
-     * @return \Illuminate\Http\Response
-     */
-    public function show(discount $discount)
-    {
-        //
+            $this->validate($request,[
+                'dis_user'=>'required'
+            ]);
+
+            // Get and validate user
+            $userID = $request->input('dis_user');
+            $user = User::find($userID);
+            if($user === null || !($user->isClient() || $user->isNewClient())) abort(404);
+
+            // Get client's discounts
+            $user_discounts = $user->getAllDiscounts();
+
+            $inputs = $request->all();
+            foreach($inputs as $key=>$value){
+                // Validate inputs
+                $subcategory = Subcategory::find($key);
+                if($subcategory !== null){
+
+                    if(!(is_numeric($value) || $value=='')) abort(404); // If value is not valid
+
+                    // If discount is already set
+                    if($user_discounts->where('subcategory_id', $key)->first() !== null){
+                        $discount = $user_discounts->where('subcategory_id', $key)->first();
+                        if($value > 0){
+                            $discount->discount = $value;
+                            $discount->save();
+                        }
+                        else{
+                            $discount->delete();
+                        }
+                    }
+                    // If discount is new
+                    else{
+                        if($value > 0){
+                            $discount = new Discount;
+                            $discount->user_id = $user->id;
+                            $discount->subcategory_id = $key;
+                            $discount->discount = $value;
+                            $discount->save();
+                        }
+                    }
+                }
+            }
+
+            return redirect('/users');
+        }
+        else abort(404);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\discount  $discount
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(discount $discount)
+    public function edit($userID)
     {
         if(auth()->user()->isAdmin()){
             $user = User::find($userID);
@@ -83,26 +122,4 @@ class DiscountsController extends Controller
         else abort(404);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\discount  $discount
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, discount $discount)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\discount  $discount
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(discount $discount)
-    {
-        //
-    }
 }
