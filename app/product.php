@@ -15,4 +15,19 @@ class Product extends Model
     public function related_products(){
         return $this->hasMany('App\RelatedProduct', 'product_id');
     }
+    
+    public function getDiscount($user){
+        if($user === null) return null;
+        $product = $this;
+        $subcategory = $product->subcategory;
+        $discount = $user->getDiscount($subcategory);
+        return $discount;
+    }
+
+    public function getPriceWithDiscount($user){
+        if($user === null) return null;
+        $product = $this;
+        $discount = $product->getDiscount($user);
+        return $product->price * (1 - $discount/100);
+    }
 }
