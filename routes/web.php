@@ -43,6 +43,13 @@ Route::delete('products/{product}', 'ProductsController@destroy')->name('product
 Route::get('products/{product}/edit', 'ProductsController@edit')->name('products.edit');
 Route::post('products/search', 'ProductsController@search')->name('products.search');
 
+// Product Files routes
+Route::post('product_files', 'ProductFilesController@store')->name('product_files.store');
+Route::get('product_files/create/{product}', 'ProductFilesController@create')->name('product_files.create');
+Route::put('product_files/{product_file}', 'ProductFilesController@update')->name('product_files.update');
+Route::delete('product_files/{product_file}', 'ProductFilesController@destroy')->name('product_files.destroy');
+Route::get('product_files/{product_file}/edit', 'ProductFilesController@edit')->name('product_files.edit');
+
 
 // Users routes
 Route::get('users', 'UsersController@index')->name('users.index');
