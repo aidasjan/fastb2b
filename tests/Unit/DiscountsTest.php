@@ -87,6 +87,24 @@ class DiscountsTest extends TestCase
         $product->unit = "kg";
         $product->subcategory_id = 6000;
         $product->save();
+
+        $category = new Category;
+        $category->id = 8000;
+        $category->name = "Test";
+        $category->save();
+
+        $category = new Category;
+        $category->id = 8000;
+        $category->name = "Test";
+        $category->save();
+
+        $productFile = new ProductFile();
+        $productFile->id = 7000;
+        $productFile->name = "Test";
+        $productFile->file_name = "Test.png";
+        $productFile->type = "Test";
+        $productFile->product_id = 6000;
+
     }
 
     public function destroyData() 
@@ -94,6 +112,8 @@ class DiscountsTest extends TestCase
         User::find(5000)->delete();
         Subcategory::find(6000)->delete();
         Discount::find(10000)->delete();
+        Product::find(7000)->delete();
+        Category::find(8000)->delete();
         Product::find(7000)->delete();
     }
 }
