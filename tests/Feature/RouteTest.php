@@ -31,19 +31,19 @@ class RouteTest extends TestCase
         $response->assertStatus(302);
     }
 
-    public function testDiscount()
+    public function testDiscountRoute()
     {
         $response = $this->post('discounts', []);
         $response->assertStatus(302);
     }
 
-    public function testProduct()
+    public function testProductRoute()
     {
         $response = $this->post('products', []);
         $response->assertStatus(302);
     }
 
-    public function testProductFiles()
+    public function testProductFilesRoute()
     {
         $response = $this->post('product_files', []);
         $response->assertStatus(302);
