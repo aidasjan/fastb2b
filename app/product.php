@@ -28,6 +28,6 @@ class Product extends Model
         if($user === null) return null;
         $product = $this;
         $discount = $product->getDiscount($user);
-        return $product->price * (1 - $discount/100) * 0.5;
+        return $product->price * (1 - $discount/100);
     }
 }
