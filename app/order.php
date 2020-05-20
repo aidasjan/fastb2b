@@ -31,5 +31,18 @@ class Order extends Model
         $user = User::find($order->user_id);
         if($user !== null && $user->isClient()) return $user;
     }
+    
+    public function attachQuantities($products){
+        $order = $this;
+        if($products === null) return null;
+        foreach($products as $product){
+            if($order->order_products->where('product_id', $product->id)->first() !== null){
+                $order_product = $order->order_products->where('product_id', $product->id)->first();
+                $product->quantity = $order_product->quantity;
+            }
+            else $product->quantity = 0;
+        }
+        return $products;
+    }
 
 }
