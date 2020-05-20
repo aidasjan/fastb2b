@@ -94,6 +94,16 @@ class SubcategoriesController extends Controller
                 $product->price = $product->getPriceWithDiscount(auth()->user());
             }
         }
+
+        // If client is placing order	
+        if(auth()->user() && auth()->user()->isClient() && session()->has('current_order')){	
+            // Validate order	
+            $orderID = session('current_order');	
+            $order = Order::find($orderID);	
+            if($order === null || $order->user_id !== auth()->user()->id) abort(404);	
+            // Attach quantites of products in order	
+            $data['products'] = $order->attachQuantities($data['products']);	
+        }
             
         return view('pages.products.index')->with($data);
         
