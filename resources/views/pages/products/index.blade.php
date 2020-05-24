@@ -29,6 +29,32 @@
         <div class='col'>
             
         @if(count($products) > 0)
+        @if(!Auth::guest() && Auth::user()->isClient() && Session::has('current_order'))
+                <form action="{{action('OrderProductsController@store')}}" method='POST'>
+                    <table class='table table-responsive-md table_main'>
+                        <tr><th></th><th>Code</th><th>Name</th><th>Unit</th><th>Currency</th><th>Price</th><th>Quantity</th></tr>
+                        <?php $counter = 1 ?>
+                        @foreach ($products as $product)
+                            <tr>
+                                <td>{{$counter++}}.</td>
+                                <td>{{$product->code}}</td>
+                                <td><a href="{{url('/products'.'/'.$product->id)}}">{{$product->name}}</a></td>
+                                <td>{{$product->unit}}</td>
+                                <td>{{$product->currency}}</td>
+                                <td>{{number_format($product->price, 2, '.', '').' '.$product->currency}}</td>
+                                <td><input type='number' min='0' step='any' onfocus="this.value=''" value='{{$product->quantity}}' name='{{$product->id}}' class='form-control'></td>
+                            </tr>
+                        @endforeach
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                            <td class='text-center'>
+                                {{csrf_field()}}
+                                <button type='submit' class='btn btn-primary text-uppercase'>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            @else
                 <table class='table table-responsive-md table_main'>
                     <tr><th></th><th>Code</th><th>Name</th><th>Unit</th><th>Currency</th><th>Price</th></tr>
                     <?php $counter = 1 ?>
@@ -39,10 +65,11 @@
                             <td><a href="{{url('/products'.'/'.$product->id)}}">{{$product->name}}</a></td>
                             <td>{{$product->unit}}</td>
                             <td>{{$product->currency}}</td>
-                            <td>{{number_format($product->price, 2, '.', '').' '.$product->currency.' / '.$product->unit}}</td>
+                            <td>{{number_format($product->price, 2, '.', '').' '.$product->currency}}</td>
                         </tr>
                     @endforeach
                 </table>
+            @endif
         @else
             <h2 class='pt-5'>No results</h2>
         @endif
