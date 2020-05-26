@@ -15,15 +15,12 @@ class Order extends Model
         return $this->hasMany('App\OrderProduct', 'order_id');
     }
 
-    public function getTotalOrderPrice($user, $currency){
+    public function getTotalOrderPrice($user){
         if ($user === null) return null;
-        if ($currency === null) return null;
         $total_price = 0;
         $order = $this;
         foreach($order->order_products as $order_product){
-            if($order_product->currency == $currency){
-                $total_price += $order_product->getTotalPrice($user);
-            }
+            $total_price += $order_product->getTotalPrice($user);
         }
         return $total_price;
     }

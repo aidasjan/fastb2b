@@ -26,6 +26,7 @@
     <div id="app">
         
         @include('inc.navbar')
+        @include('inc.order_tab')
         
         <div class='text-center pt-5' style='padding-bottom: 12rem'>
             @yield('content')
