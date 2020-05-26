@@ -15,6 +15,19 @@ class Order extends Model
         return $this->hasMany('App\OrderProduct', 'order_id');
     }
 
+    public function getTotalOrderPrice($user, $currency){
+        if ($user === null) return null;
+        if ($currency === null) return null;
+        $total_price = 0;
+        $order = $this;
+        foreach($order->order_products as $order_product){
+            if($order_product->currency == $currency){
+                $total_price += $order_product->getTotalPrice($user);
+            }
+        }
+        return $total_price;
+    }
+
     public function getStatus(){
         $order = $this;
         switch($order->status){

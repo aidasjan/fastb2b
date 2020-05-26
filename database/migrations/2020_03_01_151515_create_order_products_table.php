@@ -16,12 +16,12 @@ class CreateOrderProductsTable extends Migration
         Schema::create('order_products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('product_id');
-            $table->string('code');
-            $table->string('name');
-            $table->double('price');
-            $table->string('currency');
-            $table->string('unit');
-            $table->double('discount');
+            $table->string('code')->nullable();
+            $table->string('name')->nullable();
+            $table->double('price')->nullable();
+            $table->string('currency')->nullable();
+            $table->string('unit')->nullable();
+            $table->double('discount')->nullable();
             $table->double('quantity');
             $table->integer('order_id');
             $table->timestamps();

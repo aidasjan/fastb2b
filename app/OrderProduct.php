@@ -52,4 +52,36 @@ class OrderProduct extends Model
         if($product === null) return null;
         return $product;
     }
+
+    public function getTotalPrice($user){
+        if($user === null) return null;
+        $order_product = $this;
+        return $order_product->getPriceWithDiscount($user) * $order_product->quantity;
+    }
+
+    public function getPriceWithDiscount($user){
+        if($user === null) return null;
+        $order_product = $this;
+        if($order_product->order->status == 0){
+            $product = $order_product->getProduct();
+            if($product === null) return null;
+            return $product->getPriceWithDiscount($user);
+        }
+        else if($order_product->order->status > 0){
+            if($order_product->price === null || $order_product->discount === null) return null;
+            else return $order_product->price * (1 - $order_product->discount/100);
+        }
+    }
+
+    public function getDiscount($user){
+        if($user === null) return null;
+        $order_product = $this;
+        if($this->order->status == 0){
+            $product = $order_product->getProduct();
+            if($product === null) return null;
+            return $product->getDiscount($user);
+        }
+        else if($this->order->status > 0) return $this->discount;
+    }
+
 }

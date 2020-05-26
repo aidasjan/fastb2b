@@ -50,6 +50,7 @@ Route::put('product_files/{product_file}', 'ProductFilesController@update')->nam
 Route::delete('product_files/{product_file}', 'ProductFilesController@destroy')->name('product_files.destroy');
 Route::get('product_files/{product_file}/edit', 'ProductFilesController@edit')->name('product_files.edit');
 
+Route::post('orders', 'OrdersController@store')->name('orders.store');
 
 // Users routes
 Route::get('users', 'UsersController@index')->name('users.index');
