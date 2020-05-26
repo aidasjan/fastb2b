@@ -50,7 +50,16 @@ Route::put('product_files/{product_file}', 'ProductFilesController@update')->nam
 Route::delete('product_files/{product_file}', 'ProductFilesController@destroy')->name('product_files.destroy');
 Route::get('product_files/{product_file}/edit', 'ProductFilesController@edit')->name('product_files.edit');
 
+// Order routes
+Route::get('orders', 'OrdersController@index')->name('orders.index');
+Route::get('orders/cancel', 'OrdersController@cancel')->name('orders.cancel');
+Route::get('orders/status/{status}', 'OrdersController@indexByStatus')->name('orders.indexByStatus');
 Route::post('orders', 'OrdersController@store')->name('orders.store');
+Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
+Route::put('orders/{order}', 'OrdersController@update')->name('orders.update');
+Route::delete('orders/{order}', 'OrdersController@destroy')->name('orders.destroy');
+Route::get('orders/{order}/edit', 'OrdersController@edit')->name('orders.edit');
+Route::post('order_products', 'OrderProductsController@store')->name('order_products.store');
 
 // Users routes
 Route::get('users', 'UsersController@index')->name('users.index');
